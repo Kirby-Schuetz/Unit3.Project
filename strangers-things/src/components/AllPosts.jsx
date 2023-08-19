@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAllPosts } from "../API";
+import NavBar from "./NavBar";
+
 
 export default function AllPosts() {
 const [posts, setPosts] = useState([]);
@@ -18,15 +20,18 @@ useEffect(() => {
  getAllPosts();
 }, []);
 
-// const postsToDisplay = searchParam
-// ? posts.filter((post) =>
-//       post.item.toLowerCase().includes(searchParam)
-//       )
-//       : posts;
 
-//       console.log(posts)
+// search bar?
+const postsToDisplay = searchParam
+? posts.filter((post) =>
+      post.item.toLowerCase().includes(searchParam)
+      )
+      : posts;
 
 return (
+
+  
+  // lists the things
   <div>
    <h1>All of the Things:</h1>
    <ol className = "listed-items">
