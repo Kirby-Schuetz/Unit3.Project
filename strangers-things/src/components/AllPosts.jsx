@@ -32,7 +32,12 @@ return (
    <ol className = "listed-items">
       {posts.map((posts) => {
         return(
-          <li className="items" key={posts.id}> {posts.title}</li>
+          <figure className="item" key={posts.id}> 
+             <h3>{posts.title} </h3>
+          <p>{posts.description}</p>
+          <p>{posts.price}</p>
+          <p>{posts.location}</p>
+          </figure>
         )
       })}
    </ol>
