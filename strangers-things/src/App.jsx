@@ -11,8 +11,8 @@ function App() {
     <NavBar />
   <div className="main-section">
     <Routes>
-      {/* <Route path="/" element={<h1>The Things:</h1>} /> */}
-      <Route path="/" element= {<AllPosts />}/>
+      <Route path="/" element={<h1>/insert something here/</h1>} />
+      <Route path="/AllPosts" element= {<AllPosts />}/>
     </Routes>
     </div>
     </div>
