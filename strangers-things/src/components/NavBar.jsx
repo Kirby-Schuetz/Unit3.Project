@@ -8,7 +8,7 @@ export default function Nav() {
     </div>
     <Link to="/AllPosts">View All the Things</Link>
         <div></div>
-    <Link to="/SignUp">Not a Stranger? Sign up!</Link>
+    <Link to="/SignUpForm">Not a Stranger? Sign up!</Link>
     </nav>
       );
     }

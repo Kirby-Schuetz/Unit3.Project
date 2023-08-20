@@ -1,4 +1,4 @@
-import { useState, useEffect, Link } from "react";
+import { useState, useEffect } from "react";
 import { fetchAllPosts } from "../API";
 import NavBar from "./NavBar";
 import CreatePostForm from "./CreatePostForm"

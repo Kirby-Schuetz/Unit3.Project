@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createPost } from "../API";
 
 export default function CreatePostForm({ posts, setPosts }) {

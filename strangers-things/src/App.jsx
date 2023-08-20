@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import AllPosts from "./components/AllPosts";
 import NavBar from "./components/NavBar";
+import SignUpForm from "./components/SignUpForm"
 import './App.css'
 import './index.css'
 
@@ -17,6 +18,7 @@ function App() {
     <Routes>
       <Route path="/" element={<h1>/insert something here/</h1>} />
       <Route path="/AllPosts" element= {<AllPosts />}/>
+      <Route path="/SignUpForm" element= {<SignUpForm/>}/>
     </Routes>
     </div>
     </div>
