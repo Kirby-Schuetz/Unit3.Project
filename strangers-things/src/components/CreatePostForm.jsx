@@ -10,11 +10,11 @@ export default function CreatePostForm({ posts, setPosts }) {
     const [error, setError] = useState(null);
 
     async function handlePost(e) {
+        // prevents browser from reloading page
         e.preventDefault();
         const APIData = await createPost(title, description, price, location, username);
         if (APIData.success) {
             console.log("New Thing:", APIData.data.newPost);
-
         const newPostsList = [...posts, APIData.data.newPost];
         setPosts(newPostsList);
 

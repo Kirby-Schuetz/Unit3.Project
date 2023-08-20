@@ -1,3 +1,4 @@
+
 const COHORT_NAME = '2306-GHP-ET-WEB-FT-SF'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 // const POSTS_API_URL = "https://strangers-things.herokuapp.com/api/2306-GHP-ET-WEB-FT-SF/posts"
@@ -18,7 +19,8 @@ export async function createPost(title, description, price, location, username) 
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         title,
