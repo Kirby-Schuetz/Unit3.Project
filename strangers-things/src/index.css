@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz@10..48&family=DM+Serif+Display&display=swap');
 
 :root {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -32,7 +32,7 @@ body {
   } */
 
 a {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 500;
   color: white;
   text-decoration: inherit;
@@ -42,7 +42,7 @@ a:hover {
 }
 
 body {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   margin: 0;
   display: flex;
   place-items: center;

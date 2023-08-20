@@ -48,7 +48,7 @@ return (
       })}
    </ol>
    <div>
-   <h3>Too much stuff? Post things here!</h3>
+   <h1>Too much stuff? Post things here!</h1>
    <CreatePostForm />
    </div>
   </div>

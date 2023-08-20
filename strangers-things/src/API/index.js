@@ -13,4 +13,24 @@ export async function fetchAllPosts() {
     }
   }
 
-// export async function createPost(item, price, seller, location)
+export async function createPost(title, description, price, location, username) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        price,
+        location,
+        username
+      })
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Sorry, we have too many things. Try again later.", error);
+  }
+}

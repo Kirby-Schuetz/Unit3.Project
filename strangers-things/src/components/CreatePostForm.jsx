@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { createPost } from "../API";
+import { createPost } from "../API";
 
 export default function CreatePostForm({ posts, setPosts }) {
     const [title, setTitle] = useState("");
