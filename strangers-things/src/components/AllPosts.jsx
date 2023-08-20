@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Link } from "react";
 import { fetchAllPosts } from "../API";
 import NavBar from "./NavBar";
+import CreatePostForm from "./CreatePostForm"
 
 
 export default function AllPosts() {
@@ -22,11 +23,11 @@ useEffect(() => {
 
 
 // search bar?
-const postsToDisplay = searchParam
-? posts.filter((post) =>
-      post.item.toLowerCase().includes(searchParam)
-      )
-      : posts;
+// const postsToDisplay = searchParam
+// ? posts.filter((post) =>
+//       post.item.toLowerCase().includes(searchParam)
+//       )
+//       : posts;
 
 return (
 
@@ -37,15 +38,19 @@ return (
    <ol className = "listed-items">
       {posts.map((posts) => {
         return(
-          <figure className="item" key={posts.id}> 
+          <div className="item" key={posts.id}> 
              <h3>{posts.title} </h3>
           <p>{posts.description}</p>
           <p>{posts.price}</p>
           <p>{posts.location}</p>
-          </figure>
+          </div>
         )
       })}
    </ol>
+   <div>
+   <h3>Too much stuff? Post things here!</h3>
+   <CreatePostForm />
+   </div>
   </div>
         )
 }
