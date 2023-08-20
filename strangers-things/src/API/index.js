@@ -1,8 +1,6 @@
 
 const COHORT_NAME = '2306-GHP-ET-WEB-FT-SF'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
-// const POSTS_API_URL = "https://strangers-things.herokuapp.com/api/2306-GHP-ET-WEB-FT-SF/posts"
-
 
 export async function fetchAllPosts() {
     try {
@@ -14,12 +12,13 @@ export async function fetchAllPosts() {
     }
   }
 
+
 export async function createPost(title, description, price, location, username) {
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": `application/json`,
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
@@ -34,5 +33,50 @@ export async function createPost(title, description, price, location, username) 
     return result;
   } catch (error) {
     console.error("Sorry, we have too many things. Try again later.", error);
+  }
+}
+
+export async function createAccount() {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/users/register`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            username: '',
+            password: ''
+          }
+        })
+      });
+      const result = await response.json();
+      console.log(result)
+      return result
+  } catch (err) {
+    console.error(err);
+  }
+
+}
+const login = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/login`, {
+      method:"POST",
+      headers: {
+        'Content-Type':  'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: '',
+          password: ''
+        }
+      })
+    });
+  const result = await response.json();
+  console.log(result)
+  return result
+  } catch(err){
+    console.error(err);
   }
 }
