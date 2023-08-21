@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import SignUpForm from "./components/SignUpForm";
 // import Authenticate from './components/Authenticate'
 import LogIn from "./components/LogIn";
+import Item from "./components/Item"
 import './App.css'
 import './index.css'
 
@@ -12,7 +13,6 @@ function App() {
   const [user, setUser] = useState("")
   const [loggedIn, setLoggedIn] = React.useState(false);
  
-  console.log(token)
   return (
     <>
 <div>
@@ -24,8 +24,9 @@ function App() {
   <div className="main-section">
     <Routes>
       <Route path="/" element={ !loggedIn && <LogIn setLoggedIn={setLoggedIn}/> } />
+      <Route path="/LogIn" element= {<LogIn />}/>
       <Route path="/AllPosts" element= {<AllPosts />}/>
-      <Route path="/here" element={<SignUpForm />} />
+      <Route path="/SignUpForm" element={<SignUpForm />} />
       {/* <Authenticate token={token} setToken={setToken}/> */}
     </Routes>
     </div>

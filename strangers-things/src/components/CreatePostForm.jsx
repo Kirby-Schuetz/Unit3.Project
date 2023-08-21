@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPost } from "../API";
 import { fetchAllPosts } from "../API";
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUyNGQ1NDJjMjc1MDAwMTQ4YmZkNGYiLCJ1c2VybmFtZSI6Inl1cmkiLCJpYXQiOjE2OTI2Mzc3MTR9.RDeFQEPobSPHfCD-1k5cUzTMIVWhfs6X_D1Ph1ONHj4"
 
 
 export default function CreatePostForm({ posts, setPosts }) {
@@ -19,23 +20,12 @@ export default function CreatePostForm({ posts, setPosts }) {
             "title": title,
             "description": description,
             "price": price,
-            "location": location
+            "location": location,
         }
 
         try {
             const APIData = await createPost(postData);
             console.log(APIData)
-            // console.log("New Thing:", APIData.data.post.id);
-            // const post = {
-            //     "id": APIData.data.post.id,
-            //     "title": APIData.data.post.title,
-            //     "author": APIData.data.post.author.usename,
-            //     "description": APIData.data.post.description,
-            //     "price": APIData.data.post.price,
-            //     "location": APIData.data.post.location,
-            // };
-            // const newPostsList = [...posts, post];
-            // setPosts(newPostsList);
         } catch(e) {
             console.log(e);
             setError(e.message);

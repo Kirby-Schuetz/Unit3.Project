@@ -24,48 +24,7 @@ const SignUpForm = () => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
-    // useEffect(() => {
-    //     userRef.current.focus();
-    // }, [])
-    
-    // useEffect(() => {
-    //     const result = USER_REGEX.test(user);
-    //     console.log(result);
-    //     console.log(user);
-    //     setValidName(result);
-    // }, [user])
-    
-    // useEffect(() => {
-    //     const result = PWD_REGEX.test(pwd);
-    //     console.log(result);
-    //     console.log(pwd);
-    //     setValidPwd(result);
-    //     const match = pwd === matchPwd;
-    //     setValidMatch(match);
-    // }, [pwd, matchPwd])
 
-    // useEffect(() => {
-    //     setErrMsg('');
-    // }, [user, pwd, matchPwd])
-
-// PREVIOUS CODE THAT WASNT WORKING
-// export default function SignUpForm() {
-//     const [username, setUsername] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [error, setError] = useState(null);
-
-//     async function handleAccount(e) {
-//         e.preventDefault();
-//         try {
-//             if (APIData.success) {
-//                 console.log("New Stranger", APIData.data.newAccount);
-
-//         setUsername("");
-//         setPassword("");        }
-       
-//          } catch (error) {
-//             setError(error.message)
-//         }}
 
     return (
         <><div>
@@ -139,7 +98,7 @@ const SignUpForm = () => {
                             Must match the first password input field.
                         </p>
 
-                    <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                    <button disabled={!validName || !validPwd || !validMatch ? true : false}>Become a Stranger!</button>
                 </form>
                 <p>
                     Already registered?<br />
