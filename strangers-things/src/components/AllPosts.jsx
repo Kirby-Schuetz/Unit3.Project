@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { fetchAllPosts } from "../API";
+import { Grid, Card } from '@mui/material';
 import NavBar from "./NavBar";
+import { Routes, Route } from "react-router-dom";
+
 import CreatePostForm from "./CreatePostForm"
 
 
@@ -33,16 +36,17 @@ return (
 
   
   // lists the things
-  <div>
+  <Grid>
+    <Card variant="outlined">
    <h1>All of the Things:</h1>
    <ol className = "listed-items">
       {posts.map((posts) => {
         return(
           <div className="item" key={posts.id}> 
-             <h3>{posts.title} </h3>
-          <p>{posts.description}</p>
-          <p>{posts.price}</p>
-          <p>{posts.location}</p>
+             <h3 key="{title}">{posts.title} </h3>
+          <p key="description">{posts.description}</p>
+          <p key="price">{posts.price}</p>
+          <p key="location">{posts.location}</p>
           </div>
         )
       })}
@@ -51,6 +55,7 @@ return (
    <h1>Too much stuff? Post things here!</h1>
    <CreatePostForm />
    </div>
-  </div>
+   </Card>
+  </Grid>
         )
 }

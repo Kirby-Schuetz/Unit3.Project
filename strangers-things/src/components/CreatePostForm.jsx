@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { createPost } from "../API";
+import { fetchAllPosts } from "../API";
+
 
 export default function CreatePostForm({ posts, setPosts }) {
     const [title, setTitle] = useState("");
@@ -7,12 +9,13 @@ export default function CreatePostForm({ posts, setPosts }) {
     const [price, setPrice] = useState("");
     const [location, setLocation] = useState("");
     const [username, setUsername] = useState("");
+    const [token, setToken] = useState("");
     const [error, setError] = useState(null);
 
     async function handlePost(e) {
         // prevents browser from reloading page
         e.preventDefault();
-        const APIData = await createPost(title, description, price, location, username);
+        const APIData = await createPost(title, description, price, location, username, token);
         if (APIData.success) {
             console.log("New Thing:", APIData.data.newPost);
         const newPostsList = [...posts, APIData.data.newPost];
@@ -23,12 +26,15 @@ export default function CreatePostForm({ posts, setPosts }) {
         setPrice("");
         setLocation("");
         setUsername("");
+        setToken("");
         } else {
             setError(APIData.error.message);
         }
     }
 
     return (
+        <div>
+            {token && {token}}
         <div className="form">
         <form onSubmit={handlePost}>
             {error && <p>{error}</p>}
@@ -69,6 +75,7 @@ export default function CreatePostForm({ posts, setPosts }) {
         />
             <button>Submit</button>
         </form>
+        </div>
         </div>
     );
 }
