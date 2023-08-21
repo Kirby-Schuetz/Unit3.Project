@@ -1,6 +1,7 @@
 
 const COHORT_NAME = '2306-GHP-ET-WEB-FT-SF'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUyNGQ1NDJjMjc1MDAwMTQ4YmZkNGYiLCJ1c2VybmFtZSI6Inl1cmkiLCJpYXQiOjE2OTI2Mzc3MTR9.RDeFQEPobSPHfCD-1k5cUzTMIVWhfs6X_D1Ph1ONHj4"
 
 
 export async function fetchAllPosts() {
@@ -14,21 +15,21 @@ export async function fetchAllPosts() {
   }
 
 
-export async function createPost() {
+export async function createPost(postDetails) {
   try {
+    const requestBody = {
+      "post": postDetails
+    };
+      
+
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       headers: {
         "Content-Type": `application/json`,
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
-      // body: JSON.stringify({
-      //   title: '',
-      //   description: '',
-      //   price: '',
-      //   location: '',
-      //   username: ''
-      })
+      body: JSON.stringify(requestBody),
+    });
     const result = await response.json();
     return result;
   } catch (error) {
@@ -36,20 +37,19 @@ export async function createPost() {
   }
 }
 
-export async function createAccount() {
+export async function createAccount(user) {
   try {
     const response = await fetch(
-      `${BASE_URL}/signup`, {
+      `${BASE_URL}/users/register`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
-          // Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
-       
+        body: JSON.stringify(user),
       });
       const result = await response.json();
-      console.log(result)
-      return(result.token)
+      console.log(result);
+      // return(result.token)
   } catch (err) {
     console.error(err);
   }
@@ -73,23 +73,23 @@ export async function LogIn(){
   }
 }
 
-// export async function Authenticate() {
-//       try{
-//         const token = await tokenProvider.getToken();
+export async function Authenticate() {
+      try{
+        const token = await tokenProvider.getToken();
 
-//           const response = await fetch(`${BASE_URL}`,
-//           {
-//               method: "GET",
-//               headers: {
-//                   "Content-Type": "application/json",
-//                   Authorization: `Bearer ${token}`,
-//               },
-//           });
-//           const result= await response.json()
-//           console.log(result)
-//           // setSuccessMessage(`Not only is ${result.data.username} ${result.message}, they also love to collect things.`)
-//           // console.log(successMessage)
+          const response = await fetch(`${BASE_URL}`,
+          {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+              },
+          });
+          const result= await response.json()
+          console.log(result)
+          // setSuccessMessage(`Not only is ${result.data.username} ${result.message}, they also love to collect things.`)
+          // console.log(successMessage)
       
-//           } catch(error) {
-//           console.error(error);
-//       }}
+          } catch(error) {
+          console.error(error);
+      }}

@@ -15,21 +15,32 @@ export default function CreatePostForm({ posts, setPosts }) {
     async function handlePost(e) {
         // prevents browser from reloading page
         e.preventDefault();
-        const APIData = await createPost(title, description, price, location, username, token);
-        if (APIData.success) {
-            console.log("New Thing:", APIData.data.newPost);
-        const newPostsList = [...posts, APIData.data.newPost];
-        setPosts(newPostsList);
-
-        setTitle("");
-        setDescription("");
-        setPrice("");
-        setLocation("");
-        setUsername("");
-        setToken("");
-        } else {
-            setError(APIData.error.message);
+        const postData = {
+            "title": title,
+            "description": description,
+            "price": price,
+            "location": location
         }
+
+        try {
+            const APIData = await createPost(postData);
+            console.log(APIData)
+            // console.log("New Thing:", APIData.data.post.id);
+            // const post = {
+            //     "id": APIData.data.post.id,
+            //     "title": APIData.data.post.title,
+            //     "author": APIData.data.post.author.usename,
+            //     "description": APIData.data.post.description,
+            //     "price": APIData.data.post.price,
+            //     "location": APIData.data.post.location,
+            // };
+            // const newPostsList = [...posts, post];
+            // setPosts(newPostsList);
+        } catch(e) {
+            console.log(e);
+            setError(e.message);
+        }
+        
     }
 
     return (

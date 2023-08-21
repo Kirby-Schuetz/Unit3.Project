@@ -5,7 +5,7 @@ import LogIn from "./LogIn";
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0=9])(?=.*[!@#$%]).{8,24}$/;
 
-const Register = () => {
+const SignUpForm = () => {
     const userRef = useRef();
     const errRef = useRef();
 
@@ -24,29 +24,29 @@ const Register = () => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
+    // useEffect(() => {
+    //     userRef.current.focus();
+    // }, [])
     
-    useEffect(() => {
-        const result = USER_REGEX.test(user);
-        console.log(result);
-        console.log(user);
-        setValidName(result);
-    }, [user])
+    // useEffect(() => {
+    //     const result = USER_REGEX.test(user);
+    //     console.log(result);
+    //     console.log(user);
+    //     setValidName(result);
+    // }, [user])
     
-    useEffect(() => {
-        const result = PWD_REGEX.test(pwd);
-        console.log(result);
-        console.log(pwd);
-        setValidPwd(result);
-        const match = pwd === matchPwd;
-        setValidMatch(match);
-    }, [pwd, matchPwd])
+    // useEffect(() => {
+    //     const result = PWD_REGEX.test(pwd);
+    //     console.log(result);
+    //     console.log(pwd);
+    //     setValidPwd(result);
+    //     const match = pwd === matchPwd;
+    //     setValidMatch(match);
+    // }, [pwd, matchPwd])
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [user, pwd, matchPwd])
+    // useEffect(() => {
+    //     setErrMsg('');
+    // }, [user, pwd, matchPwd])
 
 // PREVIOUS CODE THAT WASNT WORKING
 // export default function SignUpForm() {
@@ -149,6 +149,8 @@ const Register = () => {
                 </p>
             </div></>
     )
+
+  
 }
 
-export default Register
+export default SignUpForm

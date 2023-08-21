@@ -2,22 +2,23 @@ import { useState } from 'react';
 import { TextField, Button, Grid, Card } from '@mui/material';
 
 
-const LogInPage = ({ setLoggedIn }) => {
+const LogInPage = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    const paperStyle = {padding :20,height:'70vh',width:280, margin:"20px auto"};
-    const btnstyle = {margin:'8px 0'};
+console.log(props)
+    // const paperStyle = {padding :20,height:'70vh',width:280, margin:"20px auto"};
+    // const btnstyle = {margin:'8px 0'};
 
     function handleLogin() {
-        setLoggedIn(true);
+        
+      setLoggedIn(true);
     }
 
     return (
-        <Grid>
-            <Card elevation={0} style={paperStyle}>
+        <form>
+            <Card elevation={0}>
             <Grid align='center'>
-        <h2>Stranger Sign In</h2>
+        <h2>Stranger Sign In:</h2>
         </Grid>
         <TextField
         label='Username'
@@ -33,6 +34,7 @@ const LogInPage = ({ setLoggedIn }) => {
         type='password'
         fullWidth
         required
+        autoComplete='off'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
@@ -46,7 +48,7 @@ const LogInPage = ({ setLoggedIn }) => {
         Sign in
       </Button>
       </Card>
-      </Grid>
+      </form>
     )
 };
 export default LogInPage;

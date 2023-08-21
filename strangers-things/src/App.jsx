@@ -3,16 +3,16 @@ import React, {useState} from 'react';
 import AllPosts from "./components/AllPosts";
 import NavBar from "./components/NavBar";
 import SignUpForm from "./components/SignUpForm";
-import Authenticate from './components/Authenticate'
-
+// import Authenticate from './components/Authenticate'
 import LogIn from "./components/LogIn";
 import './App.css'
 import './index.css'
 
 function App() {  
-  const [token, setToken] = useState("")
+  const [user, setUser] = useState("")
   const [loggedIn, setLoggedIn] = React.useState(false);
-
+ 
+  console.log(token)
   return (
     <>
 <div>
@@ -25,7 +25,7 @@ function App() {
     <Routes>
       <Route path="/" element={ !loggedIn && <LogIn setLoggedIn={setLoggedIn}/> } />
       <Route path="/AllPosts" element= {<AllPosts />}/>
-      <Route path="/SignUpForm" elements={<SignUpForm />} />
+      <Route path="/here" element={<SignUpForm />} />
       {/* <Authenticate token={token} setToken={setToken}/> */}
     </Routes>
     </div>

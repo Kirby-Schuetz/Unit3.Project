@@ -40,13 +40,13 @@ return (
     <Card variant="outlined">
    <h1>All of the Things:</h1>
    <ol className = "listed-items">
-      {posts.map((posts) => {
+      {posts.map((post) => {
         return(
-          <div className="item" key={posts.id}> 
-             <h3 key="{title}">{posts.title} </h3>
-          <p key="description">{posts.description}</p>
-          <p key="price">{posts.price}</p>
-          <p key="location">{posts.location}</p>
+          <div className="item" key={post.id}> 
+             <h3 key={`${post.title}-${post.id}`}>{post.title} </h3>
+          <p key={`description-${post.id}`}>{post.description}</p>
+          <p key={`price-${post.id}`}>{post.price}</p>
+          <p key={`location-${post.id}`}>{post.location}</p>
           </div>
         )
       })}
