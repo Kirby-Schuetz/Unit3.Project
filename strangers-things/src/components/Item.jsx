@@ -6,6 +6,7 @@ export default function Item({post}) {
   const navigate = useNavigate();
   
   async function handleDelete() {
+    event.preventDefault();
     // const isLoggedIn = this.state.isLoggedIn;
     try {
         const result = await deletePost(post.id);
@@ -16,9 +17,10 @@ export default function Item({post}) {
     }
   }
     async function handleEdit() {
+        event.preventDefault();
         // const isLoggedIn = this.state.isLoggedIn;
         try {
-            const result = await editPost(post.id);
+            const result = await editPost();
             console.log(result);
             navigate("/AllPosts");
         } catch (error) {

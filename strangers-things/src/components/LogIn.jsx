@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { TextField, Button, Grid, Card } from '@mui/material';
-import { useNavigate } from "react-router-dom"
 import { logIn } from '../API/index';
+import { useNavigate } from "react-router-dom";
 
 
-const LogInPage = (props) => {
+
+const LogInPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
     
     // const paperStyle = {padding :20,height:'70vh',width:280, margin:"20px auto"};
     // const btnstyle = {margin:'8px 0'};
@@ -14,12 +17,13 @@ const LogInPage = (props) => {
     async function handleLogin() {
       event.preventDefault();
       const result = await logIn(username, password);
-      console.log("here");
       console.log(username);
       console.log(password);
     
-      alert(result);
+      alert("You are logged into Strangers Things.");
       console.log(JSON.stringify(result));
+      navigate("/AllPosts");
+
     }
 
     return (

@@ -12,6 +12,7 @@ export default function CreatePostForm({ posts, setPosts }) {
     const [username, setUsername] = useState("");
     const [token, setToken] = useState("");
     const [error, setError] = useState(null);
+  
 
     async function handlePost(e) {
         // prevents browser from reloading page
@@ -75,8 +76,10 @@ export default function CreatePostForm({ posts, setPosts }) {
         onChange={(e) => setUsername(e.target.value)}
         />
             <button>Submit</button>
+            <button onClick={() => window.location.reload(true)}>Refresh</button>
         </form>
         </div>
         </div>
+        
     );
 }
