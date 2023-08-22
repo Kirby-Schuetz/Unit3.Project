@@ -30,27 +30,28 @@ const postsToDisplay = searchParam
 return (
 
     <div>
+      <div className="searchbar">
     <label>
-      Search for Things:{" "}
+      Search for the Thing:{" "}
       <input
       type="text"
-      placeholder="search"
+      placeholder="Search"
       onChange={(e) => setSearchParam(e.target.value.toLowerCase())}
       />
     </label>
-
-    <div>
-   <h1>All of the Things:</h1>
-   <ol className = "listed-items">
+  </div>
+    <div className = "listed-items">
+   <h2>All of the Things:</h2>
+   <ol>
     {postsToDisplay.map((post) => {
       return <Item key={post.id} post={post} />;
     })}
    </ol>
+   </div>
    <div>
-   <h1>Too much stuff? Post things here!</h1>
+   <h2>Too much stuff? Post things here!</h2>
    <CreatePostForm />
    </div>
    </div>
-  </div>
 )
 }

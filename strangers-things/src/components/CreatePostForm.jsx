@@ -44,35 +44,35 @@ export default function CreatePostForm({ posts, setPosts }) {
         value={title}
         type="text"
         name="title"
-        placeholder="title"
+        placeholder="What is the Thing?"
         onChange={(e) => setTitle(e.target.value)}
         />
         <input
         value={description}
         type="text"
         name="description"
-        placeholder="description"
+        placeholder="Describe the Thing"
         onChange={(e) => setDescription(e.target.value)}
         />
         <input
         value={price}
         type="text"
         name="price"
-        placeholder="price"
+        placeholder="Name your price?"
         onChange={(e) => setPrice(e.target.value)}
         /> 
         <input
         value={location}
         type="text"
         name="location"
-        placeholder="location"
+        placeholder="Where does the thing currently live?"
         onChange={(e) => setLocation(e.target.value)}
         /> 
         <input
         value={username}
         type="text"
         name="username"
-        placeholder="username"
+        placeholder="Who are you?"
         onChange={(e) => setUsername(e.target.value)}
         />
             <button>Submit</button>

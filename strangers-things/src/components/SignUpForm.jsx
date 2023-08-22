@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 // import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import LogIn from "./LogIn";
 
@@ -30,7 +32,7 @@ const SignUpForm = () => {
         <><div>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
         </div><div>
-                <h1> Become a Stranger</h1>
+                <h2> Become a Stranger</h2>
                 <form>
                     <label htmlFor="username">
                         Username:
@@ -103,7 +105,7 @@ const SignUpForm = () => {
                 <p>
                     Already registered?<br />
                     <span className="line">
-                        <LogIn />
+                    <Link to="/LogIn">Already a Stranger? Log In!</Link>
                     </span>
                 </p>
             </div></>
