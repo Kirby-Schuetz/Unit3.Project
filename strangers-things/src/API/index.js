@@ -94,7 +94,7 @@ export async function deletePost() {
   }
 }
 
-export async function editPost() {
+export async function editPost(title, description, price, location) {
   try {
     const response = await fetch(`${BASE_URL}/posts/${POST_ID}`, {
       method: "PATCH",
@@ -102,6 +102,15 @@ export async function editPost() {
         'Content-Type':  'application/json',
         "Authorization": `Bearer ${token}`,
       },
+      body: JSON.stringify({
+        "post": {
+            "title": title,
+            "description": description,
+            "price": price,
+            "location": location,
+        }
+        
+      })
     });
     const result = await response.json();
     return result;
