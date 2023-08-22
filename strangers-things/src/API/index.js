@@ -1,31 +1,28 @@
-const COHORT_NAME = '2306-GHP-ET-WEB-FT-SF'
-const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUyNGQ1NDJjMjc1MDAwMTQ4YmZkNGYiLCJ1c2VybmFtZSI6Inl1cmkiLCJpYXQiOjE2OTI2Mzc3MTR9.RDeFQEPobSPHfCD-1k5cUzTMIVWhfs6X_D1Ph1ONHj4"
-
-
-
+const COHORT_NAME = "2306-GHP-ET-WEB-FT-SF";
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUyNGQ1NDJjMjc1MDAwMTQ4YmZkNGYiLCJ1c2VybmFtZSI6Inl1cmkiLCJpYXQiOjE2OTI2Mzc3MTR9.RDeFQEPobSPHfCD-1k5cUzTMIVWhfs6X_D1Ph1ONHj4";
 
 export async function fetchAllPosts() {
-    try {
-      const response = await fetch(`${BASE_URL}/posts`);
-      const result = await response.json();
-      return result;
-    } catch (error) {
-      console.error("No posts today, you little hoarder.", error);
-    }
+  try {
+    const response = await fetch(`${BASE_URL}/posts`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("No posts today, you little hoarder.", error);
   }
-
+}
 
 export async function createPost(postDetails) {
   try {
     const requestBody = {
-      "post": postDetails
+      post: postDetails,
     };
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       headers: {
         "Content-Type": `application/json`,
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(requestBody),
     });
@@ -38,53 +35,49 @@ export async function createPost(postDetails) {
 
 export async function createAccount(user) {
   try {
-    const response = await fetch(
-      `${BASE_URL}/users/register`, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
-      const result = await response.json();
-      console.log(result);
-      return(result.token)
+    const response = await fetch(`${BASE_URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result.token;
   } catch (err) {
     console.error(err);
   }
-
 }
-export async function logIn(username, password){
+export async function logIn(username, password) {
   try {
     const response = await fetch(`${BASE_URL}/users/login`, {
-      method:"POST",
+      method: "POST",
       headers: {
-        'Content-Type':  'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "user": {
-          "username": username,
-          "password": password
-        }
-      })
+        user: {
+          username: username,
+          password: password,
+        },
+      }),
     });
     const result = await response.json();
-    console.log(result)
+    console.log(result);
     return result;
-  } catch(err){
+  } catch (err) {
     console.error(err);
   }
 }
-
-
 
 export async function deletePost() {
   try {
     const response = await fetch(`${BASE_URL}/posts/${POST_ID}`, {
       method: "DELETE",
       headers: {
-        'Content-Type':  'application/json',
-        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
     const result = await response.json();
@@ -99,18 +92,17 @@ export async function editPost(title, description, price, location) {
     const response = await fetch(`${BASE_URL}/posts/${POST_ID}`, {
       method: "PATCH",
       headers: {
-        'Content-Type':  'application/json',
-        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        "post": {
-            "title": title,
-            "description": description,
-            "price": price,
-            "location": location,
-        }
-        
-      })
+        post: {
+          title: title,
+          description: description,
+          price: price,
+          location: location,
+        },
+      }),
     });
     const result = await response.json();
     return result;
